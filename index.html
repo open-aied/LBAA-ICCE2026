@@ -77,13 +77,13 @@
     .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 30px; animation: rise 0.7s ease-out 0.1s both; }
     .hero h1 .amp { color: var(--red); font-style: normal; }
     .hero h1 .ai { color: var(--blue); }
-    .hero-parents { display: flex; align-items: stretch; gap: 0; max-width: 760px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 32px; background: var(--paper); animation: rise 0.7s ease-out 0.15s both; }
-    .hero-parents .pw { flex: 1; padding: 18px 22px; }
+    .hero-parents { display: flex; align-items: stretch; max-width: 760px; margin-bottom: 32px; animation: rise 0.7s ease-out 0.15s both; }
+    .hero-parents .pw { flex: 1; padding: 22px 26px; text-align: center; background: var(--paper); border: 1px solid var(--line); }
     .hero-parents .pw .pw-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; line-height: 1.35; }
     .hero-parents .pw .pw-meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.03em; margin-top: 6px; }
-    .hero-parents .pw.a { border-top: 3px solid var(--blue); }
-    .hero-parents .pw.b { border-top: 3px solid var(--red); }
-    .hero-parents .x { display: flex; align-items: center; justify-content: center; padding: 0 6px; font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--red); background: var(--mist); border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
+    .hero-parents .pw.a { border-top: 3px solid var(--blue); border-right: none; border-radius: 14px 0 0 14px; }
+    .hero-parents .pw.b { border-top: 3px solid var(--red); border-left: none; border-radius: 0 14px 14px 0; }
+    .hero-parents .join { align-self: center; flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--red)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; line-height: 1; margin: 0 -23px; z-index: 2; border: 3px solid var(--paper); box-shadow: 0 6px 16px rgba(17,33,61,0.16); }
     .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 0.92rem; color: var(--muted); font-weight: 500; margin-bottom: 34px; animation: rise 0.7s ease-out 0.2s both; }
     .hero-meta span { display: flex; align-items: center; gap: 7px; }
     .hero-meta svg { width: 17px; height: 17px; color: var(--blue); }
@@ -216,7 +216,9 @@
       .joint-x { width: auto; height: 52px; background: linear-gradient(90deg, var(--blue), var(--red)); }
       .hero h1 { white-space: normal; font-size: clamp(2rem, 8.5vw, 3rem); }
       .hero-parents { flex-direction: column; }
-      .hero-parents .x { padding: 8px; border-left: none; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .hero-parents .pw.a { border-right: 1px solid var(--line); border-radius: 14px 14px 0 0; }
+      .hero-parents .pw.b { border-left: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 0 0 14px 14px; }
+      .hero-parents .join { margin: -23px auto; }
       .theme { grid-template-columns: 1fr; gap: 12px; }
       .theme .tnum { font-size: 2.4rem; }
       section { padding: 64px 22px; }
@@ -261,7 +263,7 @@
         <div class="pw-name">Predicting Performance from Reading &amp; Learning Behavior</div>
         <div class="pw-meta">9 EDITIONS AT LAK</div>
       </div>
-      <div class="x">&times;</div>
+      <div class="join">+</div>
       <div class="pw b">
         <div class="pw-name">Orchestrating Human &amp; AI Agency (HAI-Agency)</div>
         <div class="pw-meta">AIED 2026</div>
