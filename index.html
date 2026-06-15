@@ -50,7 +50,9 @@
     nav.scrolled { border-bottom-color: var(--line); box-shadow: 0 4px 24px rgba(17,33,61,0.05); }
     .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 66px; }
     .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; line-height: 1.05; }
-    .nav-logo span { color: var(--red); }
+    .nav-logo .lb { color: var(--blue); }
+    .nav-logo .amp { color: var(--ink); }
+    .nav-logo .ai { color: var(--red); }
     .nav-logo small { font-family: var(--font-mono); font-size: 0.58rem; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; display: block; margin-top: 2px; }
     .nav-links { display: flex; gap: 4px; align-items: center; }
     .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--text); text-decoration: none; padding: 8px 13px; border-radius: 7px; transition: color 0.2s, background 0.2s; }
@@ -77,11 +79,14 @@
     .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 18px; animation: rise 0.7s ease-out 0.1s both; }
     .hero-fulltitle { font-family: var(--font-body); font-weight: 500; font-size: clamp(0.98rem, 1.7vw, 1.22rem); color: var(--text); max-width: 760px; margin: 0 auto 30px; line-height: 1.5; animation: rise 0.7s ease-out 0.12s both; }
     .hero-fulltitle em { font-style: normal; color: var(--red); font-weight: 600; }
-    .hero h1 .amp { color: var(--red); font-style: normal; }
-    .hero h1 .ai { color: var(--blue); }
+    .hero h1 .lb { color: var(--blue); }
+    .hero h1 .amp { color: var(--ink); font-style: normal; }
+    .hero h1 .ai { color: var(--red); }
     .hero-parents { display: flex; align-items: stretch; max-width: 760px; margin: 0 auto 32px; text-align: left; animation: rise 0.7s ease-out 0.15s both; }
     .hero-parents .pw { flex: 1; padding: 22px 26px; text-align: center; background: var(--paper); border: 1px solid var(--line); }
     .hero-parents .pw .pw-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; line-height: 1.35; }
+    .hero-parents .pw.a .pw-name { color: var(--blue); }
+    .hero-parents .pw.b .pw-name { color: var(--red); }
     .hero-parents .pw .pw-meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.03em; margin-top: 6px; }
     .hero-parents .pw.a { border-top: 3px solid var(--blue); border-right: none; border-radius: 14px 0 0 14px; }
     .hero-parents .pw.b { border-top: 3px solid var(--red); border-left: none; border-radius: 0 14px 14px 0; }
@@ -235,7 +240,7 @@
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#main" class="nav-logo">Learning Behavior <span>&amp; AI Agency</span><small>LBAA · ICCE 2026 JOINT WORKSHOP</small></a>
+    <a href="#main" class="nav-logo"><span class="lb">Learning Behavior</span> <span class="amp">&amp;</span> <span class="ai">AI Agency</span><small>LBAA · ICCE 2026 JOINT WORKSHOP</small></a>
     <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -259,7 +264,7 @@
   <div class="hero-inner">
     <div class="eyebrow">ICCE 2026 &middot; Christchurch, New Zealand</div>
     <div class="hero-tag">Joint Workshop</div>
-    <h1>Learning Behavior <span class="amp">&amp;</span> <span class="ai">AI Agency</span></h1>
+    <h1><span class="lb">Learning Behavior</span> <span class="amp">&amp;</span> <span class="ai">AI Agency</span></h1>
     <p class="hero-fulltitle">Workshop on Predicting Performance from Reading and Learning Behavior and Orchestrating Human and AI Agency &mdash; <em>Joint Edition</em></p>
     <div class="hero-parents">
       <div class="pw a">
