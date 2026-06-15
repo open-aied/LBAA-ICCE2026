@@ -74,7 +74,7 @@
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 22px; animation: rise 0.7s ease-out; }
     .eyebrow::before { content: ''; width: 9px; height: 9px; background: var(--red); }
     .hero-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; animation: rise 0.7s ease-out 0.05s both; }
-    .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.02; color: var(--ink); letter-spacing: -0.035em; max-width: 14ch; margin-bottom: 30px; animation: rise 0.7s ease-out 0.1s both; }
+    .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 30px; animation: rise 0.7s ease-out 0.1s both; }
     .hero h1 .amp { color: var(--red); font-style: normal; }
     .hero h1 .ai { color: var(--blue); }
     .hero-parents { display: flex; align-items: stretch; gap: 0; max-width: 760px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 32px; background: var(--paper); animation: rise 0.7s ease-out 0.15s both; }
@@ -214,6 +214,7 @@
       .joint-card.a { border-radius: 14px 14px 0 0; }
       .joint-card.b { border-radius: 0 0 14px 14px; }
       .joint-x { width: auto; height: 52px; background: linear-gradient(90deg, var(--blue), var(--red)); }
+      .hero h1 { white-space: normal; font-size: clamp(2rem, 8.5vw, 3rem); }
       .hero-parents { flex-direction: column; }
       .hero-parents .x { padding: 8px; border-left: none; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
       .theme { grid-template-columns: 1fr; gap: 12px; }
