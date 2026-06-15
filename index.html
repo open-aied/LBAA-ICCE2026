@@ -70,24 +70,24 @@
         radial-gradient(ellipse 36% 44% at 4% 24%, rgba(200,15,46,0.06) 0%, transparent 70%);
     }
     .hero-peaks { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 220px; pointer-events: none; }
-    .hero-inner { position: relative; max-width: 1160px; margin: 0 auto; }
+    .hero-inner { position: relative; max-width: 1160px; margin: 0 auto; text-align: center; }
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 22px; animation: rise 0.7s ease-out; }
     .eyebrow::before { content: ''; width: 9px; height: 9px; background: var(--red); }
     .hero-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; animation: rise 0.7s ease-out 0.05s both; }
     .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 30px; animation: rise 0.7s ease-out 0.1s both; }
     .hero h1 .amp { color: var(--red); font-style: normal; }
     .hero h1 .ai { color: var(--blue); }
-    .hero-parents { display: flex; align-items: stretch; max-width: 760px; margin-bottom: 32px; animation: rise 0.7s ease-out 0.15s both; }
+    .hero-parents { display: flex; align-items: stretch; max-width: 760px; margin: 0 auto 32px; text-align: left; animation: rise 0.7s ease-out 0.15s both; }
     .hero-parents .pw { flex: 1; padding: 22px 26px; text-align: center; background: var(--paper); border: 1px solid var(--line); }
     .hero-parents .pw .pw-name { font-weight: 600; color: var(--ink); font-size: 0.95rem; line-height: 1.35; }
     .hero-parents .pw .pw-meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); letter-spacing: 0.03em; margin-top: 6px; }
     .hero-parents .pw.a { border-top: 3px solid var(--blue); border-right: none; border-radius: 14px 0 0 14px; }
     .hero-parents .pw.b { border-top: 3px solid var(--red); border-left: none; border-radius: 0 14px 14px 0; }
     .hero-parents .join { align-self: center; flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--red)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.55rem; line-height: 1; margin: 0 -23px; z-index: 2; border: 3px solid var(--paper); box-shadow: 0 6px 16px rgba(17,33,61,0.16); }
-    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 0.92rem; color: var(--muted); font-weight: 500; margin-bottom: 34px; animation: rise 0.7s ease-out 0.2s both; }
+    .hero-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; font-size: 0.92rem; color: var(--muted); font-weight: 500; margin-bottom: 34px; animation: rise 0.7s ease-out 0.2s both; }
     .hero-meta span { display: flex; align-items: center; gap: 7px; }
     .hero-meta svg { width: 17px; height: 17px; color: var(--blue); }
-    .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; animation: rise 0.7s ease-out 0.25s both; }
+    .hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; animation: rise 0.7s ease-out 0.25s both; }
     .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-body); font-weight: 600; font-size: 0.92rem; padding: 13px 26px; border-radius: 9px; text-decoration: none; transition: transform 0.2s, background 0.2s, border-color 0.2s, color 0.2s; cursor: pointer; }
     .btn-primary { background: var(--red); color: #fff; }
     .btn-primary:hover { background: var(--red-deep); transform: translateY(-2px); }
@@ -391,9 +391,9 @@
     <h2 class="section-title">Important Dates</h2>
     <p class="section-desc">All dates are Anywhere on Earth (AOE). Dates below are tentative and will be confirmed soon.</p>
     <div class="timeline">
-      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Workshop Website &amp; Call for Papers Launch</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Paper Submission Deadline</div></div></div>
-      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Acceptance Notifications</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">11 August 2026</div><div class="tl-label">Workshop Paper Submission Deadline</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">Mid to Late August 2026</div><div class="tl-label">Workshop Paper Review Period</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">1 September 2026</div><div class="tl-label">Notification of Acceptance</div></div></div>
       <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Camera-Ready Paper Deadline</div></div></div>
       <div class="tl-item final"><div class="tl-dot"></div><div><div class="tl-date">Nov 30 – Dec 4, 2026</div><div class="tl-label">Workshop Day (within ICCE 2026)</div><span class="tl-note">Full-day, in-person at ICCE 2026, Christchurch, New Zealand</span></div></div>
     </div>
@@ -458,30 +458,6 @@
       <div class="org-card"><div class="org-avatar">TY</div><div class="org-name">Takayoshi Yamashita</div><div class="org-role">Professor</div><div class="org-aff">Chubu University, Japan</div></div>
       <div class="org-card"><div class="org-avatar">AS</div><div class="org-name">Atsushi Shimada</div><div class="org-role">Professor</div><div class="org-aff">Kyushu University, Japan</div></div>
       <div class="org-card"><img class="org-avatar org-photo" src="img/HiroakiOGATA.jpg" alt="Hiroaki Ogata"><div class="org-name">Hiroaki Ogata</div><div class="org-role">Professor · President of APSCE</div><div class="org-aff">Kyoto University, Japan</div></div>
-    </div>
-
-    <div class="org-subsection">
-      <div class="org-group-label">Program Committee</div>
-      <div class="pc-grid">
-        <div class="pc-member"><strong>Mei-Rong Alice Chen</strong> — Soochow University, Taiwan</div>
-        <div class="pc-member"><strong>Wenbin Gan</strong> — NICT, Japan</div>
-        <div class="pc-member"><strong>Chia-Yu Hsu</strong> — Kyoto University, Japan</div>
-        <div class="pc-member"><strong>Lingxi Jin</strong> — Ewha Womans University, Korea</div>
-        <div class="pc-member"><strong>Liang Changhao</strong> — Kyushu University, Japan</div>
-        <div class="pc-member"><strong>Xuewang Geng</strong> — Sojo University, Japan</div>
-        <div class="pc-member"><strong>Owen H.T. Lu</strong> — National Chengchi University, Taiwan</div>
-        <div class="pc-member"><strong>Marcus Messer</strong> — Imperial College London, UK</div>
-        <div class="pc-member"><strong>Sunny Prajapati</strong> — IIT Bombay, India</div>
-        <div class="pc-member"><strong>Jia (Jackie) Rong</strong> — Monash University, Australia</div>
-        <div class="pc-member"><strong>Kyoungwon Seo</strong> — SEOULTECH, Korea</div>
-        <div class="pc-member"><strong>Kyosuke Takami</strong> — Osaka Kyoiku University, Japan</div>
-        <div class="pc-member"><strong>Xiaonan Wang</strong> — Kyushu University, Japan</div>
-        <div class="pc-member"><strong>Steve Woollaston</strong> — Kyoto University, Japan</div>
-        <div class="pc-member"><strong>Taisei Yamauchi</strong> — Kyoto University, Japan</div>
-        <div class="pc-member"><strong>Yuanyuan Yang</strong> — Jiangsu Normal University, China</div>
-        <div class="pc-member"><strong>Albert C.M. Yang</strong> — National Chung Hsing University, Taiwan</div>
-        <div class="pc-member"><strong>Christopher C.Y. Yang</strong> — National Taipei University of Education, Taiwan</div>
-      </div>
     </div>
   </div>
 </section>
