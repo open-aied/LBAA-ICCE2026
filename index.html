@@ -75,6 +75,10 @@
     .hero-inner { position: relative; max-width: 1160px; margin: 0 auto; text-align: center; }
     .eyebrow { display: flex; justify-content: center; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; animation: rise 0.7s ease-out; }
     .eyebrow::before { content: ''; width: 9px; height: 9px; background: var(--red); }
+    .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+    .eyebrow a:hover { border-bottom-color: currentColor; }
+    footer p a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); transition: border-color 0.2s, color 0.2s; }
+    footer p a:hover { color: var(--red); border-bottom-color: var(--red); }
     .hero-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; animation: rise 0.7s ease-out 0.05s both; }
     .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 18px; animation: rise 0.7s ease-out 0.1s both; }
     .hero-fulltitle { font-family: var(--font-body); font-weight: 500; font-size: clamp(0.98rem, 1.7vw, 1.22rem); color: var(--text); max-width: 760px; margin: 0 auto 30px; line-height: 1.5; animation: rise 0.7s ease-out 0.12s both; }
@@ -267,7 +271,7 @@
     <polygon points="0,220 280,140 560,90 820,170 1080,110 1320,160 1440,120 1440,220" fill="#c80f2e" opacity="0.05"/>
   </svg>
   <div class="hero-inner">
-    <div class="eyebrow">ICCE 2026 &middot; Christchurch, New Zealand</div>
+    <div class="eyebrow"><a href="https://icce2026.csse.canterbury.ac.nz/" target="_blank" rel="noopener">ICCE 2026</a> &middot; Christchurch, New Zealand</div>
     <div class="hero-tag">Joint Workshop</div>
     <h1><span class="lb">Learning Behavior</span> <span class="amp">&amp;</span> <span class="ai">AI Agency</span></h1>
     <p class="hero-fulltitle">Workshop on Predicting Performance from Reading and Learning Behavior and Orchestrating Human and AI Agency &mdash; <em>Joint Edition</em></p>
@@ -462,7 +466,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-title">Learning Behavior &amp; AI Agency — Joint Workshop @ ICCE 2026</div>
-    <p>34th International Conference on Computers in Education (ICCE 2026)<br>"Reimagining Learning Ecologies in the Age of Intelligent Technologies"<br>Christchurch, New Zealand</p>
+    <p><a href="https://icce2026.csse.canterbury.ac.nz/" target="_blank" rel="noopener">34th International Conference on Computers in Education (ICCE 2026)</a><br>"Reimagining Learning Ecologies in the Age of Intelligent Technologies"<br>Christchurch, New Zealand</p>
     <div class="footer-links">
       <a href="#joint">Joint Edition</a>
       <a href="#about">About</a>
