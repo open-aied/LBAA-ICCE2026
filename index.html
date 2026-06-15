@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Behavior &amp; AI Agency — Joint Workshop @ ICCE 2026</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ICCE 2026 palette — navy #11213d / royal #012269, crimson #c80f2e, blue #235787, gray #eaecee */
+      --brand-50: #eef2f8;
+      --brand-100: #d6e1ee;
+      --brand-200: #b3c7de;
+      --brand-300: #7f9fc4;
+      --brand-400: #4a78a6;
+      --brand-500: #235787;
+      --brand-600: #1c4475;
+      --brand-700: #16315a;
+      --brand-800: #11213d;
+      --brand-900: #0a1832;
+      --accent-400: #e23b54;
+      --accent-500: #c80f2e;
+      --accent-600: #a60b26;
+      --neutral-50: #f5f6f8;
+      --neutral-100: #eaecee;
+      --neutral-200: #dde1e6;
+      --neutral-300: #c6ccd3;
+      --neutral-400: #9aa1ab;
+      --neutral-500: #5a5a5a;
+      --neutral-600: #4b4f56;
+      --neutral-700: #383b41;
+      --neutral-800: #232529;
+      --neutral-900: #11213d;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: var(--font-body); color: var(--neutral-800);
+      background: var(--neutral-50); line-height: 1.7; font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,246,248,0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--neutral-200); transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.06); }
+    .nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.05rem; color: var(--brand-800);
+      text-decoration: none; letter-spacing: -0.01em; line-height: 1.1;
+    }
+    .nav-logo span { color: var(--accent-500); }
+    .nav-logo small {
+      font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500;
+      color: var(--neutral-400); letter-spacing: 0.06em; display: block; margin-top: 1px;
+    }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      font-size: 0.84rem; font-weight: 500; color: var(--neutral-600);
+      text-decoration: none; padding: 6px 12px; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--brand-700); background: var(--brand-50); }
+    .nav-links .btn-submit { background: var(--accent-500); color: #fff; font-weight: 600; padding: 8px 16px; border-radius: 8px; }
+    .nav-links .btn-submit:hover { background: var(--accent-600); color: #fff; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; width: 36px; height: 36px; position: relative; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--neutral-700); position: absolute; left: 7px; transition: 0.3s; }
+    .hamburger span:nth-child(1) { top: 11px; }
+    .hamburger span:nth-child(2) { top: 17px; }
+    .hamburger span:nth-child(3) { top: 23px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 94vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--brand-900) 0%, var(--brand-800) 45%, var(--brand-600) 100%);
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 80%, rgba(200,15,46,0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 85% 20%, rgba(200,15,46,0.10) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; text-align: center; padding: 120px 24px 80px; max-width: 880px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px; padding: 6px 18px 6px 12px;
+      font-size: 0.82rem; font-weight: 600; color: #fff;
+      letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px;
+      animation: fadeDown 0.8s ease-out;
+    }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-500); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+    .series-tag {
+      display: inline-block; font-family: var(--font-mono); font-size: 0.74rem;
+      font-weight: 500; color: var(--accent-400); letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 16px;
+      animation: fadeDown 0.8s ease-out 0.05s both;
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.1; color: #fff; margin-bottom: 22px; letter-spacing: -0.02em;
+      animation: fadeDown 0.8s ease-out 0.1s both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(120deg, var(--accent-400), var(--accent-500));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-parents {
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+      max-width: 760px; margin: 0 auto 26px; animation: fadeDown 0.8s ease-out 0.15s both;
+    }
+    .hero-parents .pw {
+      font-size: 0.92rem; color: rgba(255,255,255,0.82); font-weight: 500; line-height: 1.4;
+    }
+    .hero-parents .pw small { display: block; font-family: var(--font-mono); font-size: 0.68rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-top: 2px; }
+    .hero-parents .times { font-family: var(--font-display); font-size: 1.6rem; color: var(--accent-400); font-weight: 700; }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+      font-size: 0.95rem; color: rgba(255,255,255,0.62); font-weight: 500;
+      animation: fadeDown 0.8s ease-out 0.3s both;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+    .hero-meta svg { width: 18px; height: 18px; color: var(--accent-400); }
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+      color: var(--brand-500); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      color: var(--brand-800); margin-bottom: 16px; letter-spacing: -0.01em;
+    }
+    .section-desc { font-size: 1.05rem; color: var(--neutral-600); max-width: 680px; margin-bottom: 40px; line-height: 1.7; }
+
+    /* ── JOINT EDITION CALLOUT ── */
+    .joint { background: var(--brand-800); }
+    .joint .container { max-width: 1000px; }
+    .joint .section-label { color: var(--brand-200); }
+    .joint .section-title { color: #fff; }
+    .joint-cards { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: stretch; margin-top: 36px; }
+    .joint-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 30px 28px; text-align: left; }
+    .joint-card.self { border-color: rgba(200,15,46,0.5); }
+    .joint-card .jc-tag { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-400); margin-bottom: 10px; }
+    .joint-card h3 { font-family: var(--font-display); font-size: 1.2rem; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .joint-card p { font-size: 0.9rem; color: rgba(255,255,255,0.72); line-height: 1.6; }
+    .joint-plus { display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 2.4rem; color: var(--accent-400); font-weight: 700; }
+
+    /* ── ABOUT ── */
+    .about { background: #fff; }
+    .about-text { font-size: 1.05rem; color: var(--neutral-700); line-height: 1.8; margin-bottom: 24px; }
+    .about-text a { color: var(--brand-500); font-weight: 600; text-decoration: none; }
+    .about-text a:hover { text-decoration: underline; }
+
+    /* ── THEMES ── */
+    .themes { background: var(--neutral-100); }
+    .theme-block {
+      background: #fff; border: 1px solid var(--neutral-200); border-radius: 14px;
+      padding: 28px 30px; margin-bottom: 18px; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .theme-block:hover { border-color: var(--brand-300); box-shadow: 0 6px 22px rgba(17,33,61,0.07); }
+    .theme-block.intersect { border-left: 4px solid var(--accent-500); }
+    .theme-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+    .theme-num { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500; color: var(--accent-500); }
+    .theme-head h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--brand-800); }
+    .theme-head .intersect-tag {
+      font-family: var(--font-mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent-600); background: rgba(200,15,46,0.1);
+      padding: 3px 9px; border-radius: 100px;
+    }
+    .theme-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 6px 24px; }
+    .theme-list li { font-size: 0.9rem; color: var(--neutral-600); padding: 5px 0 5px 20px; position: relative; line-height: 1.5; }
+    .theme-list li::before { content: ''; position: absolute; left: 4px; top: 13px; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-400); }
+
+    /* ── DATES ── */
+    .dates { background: #fff; }
+    .timeline { max-width: 600px; margin: 0 auto; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--brand-200); }
+    .tl-item { display: flex; gap: 24px; padding: 18px 0; position: relative; }
+    .tl-dot {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: var(--brand-50); border: 2px solid var(--brand-300);
+      display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .tl-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--brand-500); }
+    .tl-item:hover .tl-dot { background: var(--brand-100); border-color: var(--brand-500); }
+    .tl-date { font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--brand-600); margin-bottom: 2px; }
+    .tl-label { font-size: 0.95rem; color: var(--neutral-700); font-weight: 500; }
+    .tl-note { display: block; font-size: 0.82rem; color: var(--neutral-500); margin-top: 2px; font-weight: 400; }
+
+    /* ── SUBMISSION ── */
+    .submission { background: var(--neutral-100); }
+    .sub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 28px; }
+    .sub-card { background: #fff; border: 1px solid var(--neutral-200); border-radius: 10px; padding: 24px; text-align: center; }
+    .sub-card .sub-type { font-family: var(--font-display); font-size: 1.1rem; color: var(--brand-800); margin-bottom: 4px; }
+    .sub-card .sub-pages { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-500); margin-bottom: 8px; }
+    .sub-card p { font-size: 0.84rem; color: var(--neutral-500); }
+    .sub-info { margin-top: 28px; padding: 24px; background: #fff; border: 1px solid var(--neutral-200); border-radius: 10px; }
+    .sub-info p { font-size: 0.92rem; color: var(--neutral-600); margin-bottom: 8px; }
+    .sub-info strong { color: var(--neutral-800); }
+    .dataset-note { margin-top: 16px; padding: 18px 22px; background: var(--brand-50); border: 1px solid var(--brand-200); border-radius: 10px; }
+    .dataset-note p { font-size: 0.9rem; color: var(--brand-700); margin: 0; }
+
+    /* ── PROGRAM ── */
+    .program { background: #fff; }
+    .format-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 28px 0; }
+    .format-item { padding: 22px; background: var(--neutral-100); border-radius: 12px; }
+    .format-item h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--brand-800); margin-bottom: 6px; }
+    .format-item p { font-size: 0.86rem; color: var(--neutral-500); line-height: 1.55; }
+    .coming-soon { margin-top: 12px; padding: 32px 28px; text-align: center; background: var(--neutral-100); border: 1px dashed var(--neutral-300); border-radius: 14px; }
+    .coming-soon h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--brand-800); margin-bottom: 8px; }
+    .coming-soon p { font-size: 0.95rem; color: var(--neutral-500); }
+
+    /* ── ORGANIZERS ── */
+    .organizers { background: var(--neutral-100); }
+    .org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .org-card { background: #fff; border: 1px solid var(--neutral-200); border-radius: 12px; padding: 28px; text-align: center; transition: transform 0.25s, box-shadow 0.25s; }
+    .org-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+    .org-avatar {
+      width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 18px;
+      background: linear-gradient(135deg, var(--brand-400), var(--brand-700));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.9rem; color: #fff; font-weight: 700;
+    }
+    .org-photo { object-fit: cover; font-size: 0; background: var(--neutral-200); border: none; }
+    .org-name { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--brand-800); margin-bottom: 2px; }
+    .org-role { font-size: 0.8rem; color: var(--accent-500); font-weight: 600; margin-bottom: 4px; }
+    .org-aff { font-size: 0.82rem; color: var(--neutral-500); line-height: 1.45; }
+    .org-group-label {
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+      color: var(--brand-600); letter-spacing: 0.06em; text-transform: uppercase;
+      margin: 0 0 18px; display: flex; align-items: center; gap: 10px;
+    }
+    .org-group-label::after { content: ''; flex: 1; height: 1px; background: var(--neutral-200); }
+    .org-subsection { margin-top: 48px; }
+    .pc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4px 32px; margin-top: 8px; }
+    .pc-member { font-size: 0.9rem; color: var(--neutral-700); padding: 8px 0; border-bottom: 1px solid var(--neutral-200); line-height: 1.5; }
+    .pc-member strong { color: var(--brand-800); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--brand-900); color: rgba(255,255,255,0.5); padding: 48px 24px; text-align: center; }
+    footer .footer-title { font-family: var(--font-display); font-size: 1.2rem; color: #fff; margin-bottom: 8px; }
+    footer p { font-size: 0.85rem; line-height: 1.6; }
+    footer .footer-links { margin-top: 20px; }
+    footer .footer-links a { color: var(--accent-400); text-decoration: none; font-size: 0.85rem; margin: 0 12px; }
+    footer .footer-links a:hover { color: var(--accent-500); text-decoration: underline; }
+    .ack { margin-top: 24px; font-size: 0.8rem; color: rgba(255,255,255,0.35); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(245,246,248,0.97); backdrop-filter: blur(16px);
+        padding: 16px 24px; border-bottom: 1px solid var(--neutral-200); gap: 4px;
+      }
+      .nav-links.open a { padding: 12px 14px; }
+      .hero-meta { flex-direction: column; gap: 12px; }
+      .hero-parents { flex-direction: column; gap: 8px; }
+      .hero-parents .times { transform: rotate(90deg); }
+      .joint-cards { grid-template-columns: 1fr; gap: 16px; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#main" class="nav-logo">Learning Behavior <span>&amp; AI Agency</span><small>LBAA · ICCE 2026 JOINT WORKSHOP</small></a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#joint">Joint Edition</a>
+      <a href="#about">About</a>
+      <a href="#themes">Themes</a>
+      <a href="#dates">Dates</a>
+      <a href="#organizers">Organizers</a>
+      <a href="#submission" class="btn-submit">Submit Paper</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="main">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">ICCE 2026 &middot; Christchurch, New Zealand</div>
+    <div class="series-tag">Joint Workshop</div>
+    <h1>Learning Behavior <em>&amp; AI Agency</em></h1>
+    <div class="hero-parents">
+      <span class="pw">Predicting Performance from Reading &amp; Learning Behavior<small>9 editions at LAK</small></span>
+      <span class="times">&times;</span>
+      <span class="pw">Orchestrating Human &amp; AI Agency (HAI-Agency)<small>AIED 2026</small></span>
+    </div>
+    <div class="hero-meta">
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
+        Christchurch &middot; New Zealand
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>
+        Nov 30 – Dec 4, 2026
+      </span>
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+        Full-Day &middot; In-Person
+      </span>
+    </div>
+    <div style="margin-top: 32px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 20px 28px; max-width: 720px; margin-left: auto; margin-right: auto; text-align: left; animation: fadeDown 0.8s ease-out 0.4s both;">
+      <div style="font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--accent-400); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px;">Latest News</div>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="color: #fff; font-weight: 700; font-size: 0.95rem; margin-bottom: 8px;">
+          &#x1F4E2; A joint workshop at <strong>ICCE 2026</strong> bringing together the LAK learning-behavior community and HAI-Agency!
+        </li>
+        <li style="color: rgba(255,255,255,0.75); font-weight: 600; font-size: 0.9rem;">
+          &#x1F4E2; Call for Papers, dataset access, and important dates coming soon.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- JOINT EDITION -->
+<section class="joint" id="joint">
+  <div class="container reveal">
+    <div class="section-label">A Joint Edition</div>
+    <h2 class="section-title">Two Communities, One Workshop</h2>
+    <p class="section-desc" style="color: rgba(255,255,255,0.74);">
+      This ICCE 2026 edition brings two established workshops together. The expansion of digital learning has made rich behavioral data available, while educational AI is shifting from reactive tools toward proactive, agentic systems. We unite both around one design question: how can agentic AI use behavioral data to deliver proactive interventions while preserving learner agency and teacher professional judgement?
+    </p>
+    <div class="joint-cards">
+      <div class="joint-card">
+        <div class="jc-tag">Workshop A</div>
+        <h3>Predicting Performance from Reading &amp; Learning Behavior</h3>
+        <p>Nine editions at LAK. Extracting pedagogical signals from reading patterns, navigation traces, and engagement logs to predict performance, detect engagement change, and provide actionable feedback.</p>
+      </div>
+      <div class="joint-plus">+</div>
+      <div class="joint-card self">
+        <div class="jc-tag">Workshop B</div>
+        <h3>HAI-Agency</h3>
+        <p>Introduced at AIED 2026. Orchestrating human and AI agency for proactive and reflective learning — designing agentic AI that preserves learner agency and teacher professional judgement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container reveal">
+    <div class="section-label">About the Workshop</div>
+    <h2 class="section-title">Behavior-Informed, Agency-Preserving AI</h2>
+    <p class="about-text">
+      Over the past decade, Learning Analytics has established robust methods for analyzing digital learning traces — reading behavior, navigation, duration, and annotation patterns from digital textbooks and e-book systems — supporting at-risk identification, performance prediction, and evidence-based instructional interventions. Concurrently, Large Language Models and Generative AI are transforming educational AI from reactive, prompt-based tools into <strong>proactive Agentic AI systems</strong> that act as active collaborators rather than passive tools.
+    </p>
+    <p class="about-text">
+      Yet performance gains do not guarantee learning: AI can improve task outcomes without producing meaningful learning unless guided by pedagogical principles. This defines a new design challenge at the intersection of AI autonomy and pedagogical alignment, and motivates deeper integration of learning analytics into research on human-AI interaction — from structured learning logs to dynamic interaction data such as conversational processes, prompt refinement, help-seeking, and collaboration patterns.
+    </p>
+    <p class="about-text">
+      Aligned with the ICCE 2026 theme <em>"Reimagining Learning Ecologies in the Age of Intelligent Technologies"</em>, this full-day workshop bridges ICCE's sub-conferences on AIED/ITS (C1) and Advanced Learning Technologies and Learning Analytics (C3), convening researchers across learning analytics, AI in education, and human-AI interaction.
+    </p>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section class="themes" id="themes">
+  <div class="container reveal">
+    <div class="section-label">Call for Papers</div>
+    <h2 class="section-title">Three Thematic Areas</h2>
+    <p class="section-desc">
+      We welcome full, short, and position papers on (but not limited to) the following topics:
+    </p>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <span class="theme-num">Theme 01</span>
+        <h3>Learning Analytics for Performance Prediction</h3>
+      </div>
+      <ul class="theme-list">
+        <li>Student performance / at-risk prediction</li>
+        <li>Reading-behavior self-regulation profiles across a course</li>
+        <li>Preview, in-class, and review reading patterns</li>
+        <li>Student engagement analysis and behavior change detection</li>
+        <li>Visualization methods for meaningful stakeholder feedback</li>
+      </ul>
+    </div>
+
+    <div class="theme-block">
+      <div class="theme-head">
+        <span class="theme-num">Theme 02</span>
+        <h3>Agentic AI for Proactive and Reflective Learning</h3>
+      </div>
+      <ul class="theme-list">
+        <li>Proactive and reflective learning, co-regulation, and learner agency</li>
+        <li>Proactive/reflective prompts, scaffolds, and personalized interactions</li>
+        <li>Teacher-facing design and human-AI co-orchestration</li>
+        <li>Explainable, teachable, and designable AI systems</li>
+        <li>Process-based and human-AI collaborative assessment</li>
+      </ul>
+    </div>
+
+    <div class="theme-block intersect">
+      <div class="theme-head">
+        <span class="theme-num">Theme 03</span>
+        <h3>Behavior-Informed Agentic AI Design</h3>
+        <span class="intersect-tag">At the Intersection</span>
+      </div>
+      <ul class="theme-list">
+        <li>Behavioral signals triggering proactive AI interventions</li>
+        <li>Adaptive scaffolding informed by longitudinal learning traces</li>
+        <li>Predictive models for calibrating agentic interventions</li>
+        <li>Process mining of human-AI interaction</li>
+        <li>Detecting AI overreliance and productive co-learning through interaction signals</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT DATES -->
+<section class="dates" id="dates">
+  <div class="container reveal">
+    <div class="section-label">Timeline</div>
+    <h2 class="section-title">Important Dates</h2>
+    <p class="section-desc">All dates are Anywhere on Earth (AOE). Dates below are tentative and will be confirmed soon.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Workshop Website &amp; Call for Papers Launch</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Paper Submission Deadline</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Acceptance Notifications</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">TBA</div><div class="tl-label">Camera-Ready Paper Deadline</div></div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div><div class="tl-date">Nov 30 – Dec 4, 2026</div><div class="tl-label">Workshop Day (within ICCE 2026)</div><span class="tl-note">Full-day, in-person at ICCE 2026, Christchurch, New Zealand</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMISSION -->
+<section class="submission" id="submission">
+  <div class="container reveal">
+    <div class="section-label">Call for Paper</div>
+    <h2 class="section-title">Submission Guidelines</h2>
+    <div class="sub-grid">
+      <div class="sub-card"><div class="sub-type">Full Paper</div><div class="sub-pages">following ICCE template</div><p>Comprehensive studies with complete methodology and findings</p></div>
+      <div class="sub-card"><div class="sub-type">Short Paper</div><div class="sub-pages">following ICCE template</div><p>Work-in-progress with preliminary results or novel concepts</p></div>
+      <div class="sub-card"><div class="sub-type">Position Paper</div><div class="sub-pages">following ICCE template</div><p>Perspectives, provocations, or emerging directions</p></div>
+    </div>
+    <div class="sub-info">
+      <p>All submissions must follow the <strong>ICCE 2026 paper template</strong>.</p>
+      <p><strong>Review process:</strong> All submissions undergo <strong>single-blind</strong> review by at least two program committee members.</p>
+      <p><strong>Evaluation criteria:</strong> quality, rigor, originality, relevance to the workshop scope, and ethical consideration.</p>
+      <p><strong>Submission portal:</strong> EasyChair link — [TBA].</p>
+      <p><strong>Template:</strong> ICCE 2026 paper template — [TBA].</p>
+    </div>
+    <div class="dataset-note">
+      <p>&#x1F4CA; <strong>Data Challenge:</strong> We additionally invite submissions using the learning-behavior dataset and the <strong>OpenLA</strong> library. Dataset access requires a brief application; details will be published here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program" id="program">
+  <div class="container reveal">
+    <div class="section-label">Format</div>
+    <h2 class="section-title">Workshop Program</h2>
+    <p class="section-desc">A full-day in-person mini-conference at ICCE 2026 across the two communities.</p>
+    <div class="format-row">
+      <div class="format-item"><h4>Joint Keynote</h4><p>A shared keynote bridging learning analytics and agentic AI in education.</p></div>
+      <div class="format-item"><h4>Thematic Sessions</h4><p>Paper presentations grouped by the three thematic areas.</p></div>
+      <div class="format-item"><h4>Concluding Discussion</h4><p>Open problems and collaboration opportunities across both communities.</p></div>
+    </div>
+    <div class="coming-soon">
+      <h3>Detailed Program Coming Soon</h3>
+      <p>The full schedule will be announced after paper acceptance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZERS -->
+<section class="organizers" id="organizers">
+  <div class="container reveal">
+    <div class="section-label">People</div>
+    <h2 class="section-title">Organizers</h2>
+    <div class="org-group-label">Workshop Organizers</div>
+    <div class="org-grid">
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/ligen.jpg" alt="Gen Li">
+        <div class="org-name">Gen Li</div>
+        <div class="org-role">Assistant Professor</div>
+        <div class="org-aff">Kyushu University, Japan</div>
+      </div>
+      <div class="org-card">
+        <div class="org-avatar">LC</div>
+        <div class="org-name">Li Chen</div>
+        <div class="org-role">Lecturer</div>
+        <div class="org-aff">Osaka Kyoiku University, Japan</div>
+      </div>
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/boxuan-ma.png" alt="Boxuan Ma">
+        <div class="org-name">Boxuan Ma</div>
+        <div class="org-role">Assistant Professor</div>
+        <div class="org-aff">Kyushu University, Japan</div>
+      </div>
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/huiyong-li.jpeg" alt="Huiyong Li">
+        <div class="org-name">Huiyong Li</div>
+        <div class="org-role">Assistant Professor</div>
+        <div class="org-aff">Kyushu University, Japan</div>
+      </div>
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/daiyiling.jpg" alt="Yiling Dai">
+        <div class="org-name">Yiling Dai</div>
+        <div class="org-role">Assistant Professor</div>
+        <div class="org-aff">Hiroshima University, Japan</div>
+      </div>
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/flanagan.jpg" alt="Brendan Flanagan">
+        <div class="org-name">Brendan Flanagan</div>
+        <div class="org-role">Professor</div>
+        <div class="org-aff">Ritsumeikan University, Japan</div>
+      </div>
+      <div class="org-card">
+        <div class="org-avatar">DD</div>
+        <div class="org-name">Daisuke Deguchi</div>
+        <div class="org-role">Associate Professor</div>
+        <div class="org-aff">Nagoya University, Japan</div>
+      </div>
+      <div class="org-card">
+        <div class="org-avatar">TY</div>
+        <div class="org-name">Takayoshi Yamashita</div>
+        <div class="org-role">Professor</div>
+        <div class="org-aff">Chubu University, Japan</div>
+      </div>
+      <div class="org-card">
+        <div class="org-avatar">AS</div>
+        <div class="org-name">Atsushi Shimada</div>
+        <div class="org-role">Professor</div>
+        <div class="org-aff">Kyushu University, Japan</div>
+      </div>
+      <div class="org-card">
+        <img class="org-avatar org-photo" src="img/HiroakiOGATA.jpg" alt="Hiroaki Ogata">
+        <div class="org-name">Hiroaki Ogata</div>
+        <div class="org-role">Professor · President of APSCE</div>
+        <div class="org-aff">Kyoto University, Japan</div>
+      </div>
+    </div>
+
+    <div class="org-subsection">
+      <div class="org-group-label">Program Committee</div>
+      <div class="pc-grid">
+        <div class="pc-member"><strong>Mei-Rong Alice Chen</strong> — Soochow University, Taiwan</div>
+        <div class="pc-member"><strong>Wenbin Gan</strong> — NICT, Japan</div>
+        <div class="pc-member"><strong>Chia-Yu Hsu</strong> — Kyoto University, Japan</div>
+        <div class="pc-member"><strong>Lingxi Jin</strong> — Ewha Womans University, Korea</div>
+        <div class="pc-member"><strong>Liang Changhao</strong> — Kyushu University, Japan</div>
+        <div class="pc-member"><strong>Xuewang Geng</strong> — Sojo University, Japan</div>
+        <div class="pc-member"><strong>Owen H.T. Lu</strong> — National Chengchi University, Taiwan</div>
+        <div class="pc-member"><strong>Marcus Messer</strong> — Imperial College London, UK</div>
+        <div class="pc-member"><strong>Sunny Prajapati</strong> — IIT Bombay, India</div>
+        <div class="pc-member"><strong>Jia (Jackie) Rong</strong> — Monash University, Australia</div>
+        <div class="pc-member"><strong>Kyoungwon Seo</strong> — SEOULTECH, Korea</div>
+        <div class="pc-member"><strong>Kyosuke Takami</strong> — Osaka Kyoiku University, Japan</div>
+        <div class="pc-member"><strong>Xiaonan Wang</strong> — Kyushu University, Japan</div>
+        <div class="pc-member"><strong>Steve Woollaston</strong> — Kyoto University, Japan</div>
+        <div class="pc-member"><strong>Taisei Yamauchi</strong> — Kyoto University, Japan</div>
+        <div class="pc-member"><strong>Yuanyuan Yang</strong> — Jiangsu Normal University, China</div>
+        <div class="pc-member"><strong>Albert C.M. Yang</strong> — National Chung Hsing University, Taiwan</div>
+        <div class="pc-member"><strong>Christopher C.Y. Yang</strong> — National Taipei University of Education, Taiwan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-title">Learning Behavior &amp; AI Agency — Joint Workshop @ ICCE 2026</div>
+    <p>34th International Conference on Computers in Education (ICCE 2026)<br>
+      "Reimagining Learning Ecologies in the Age of Intelligent Technologies" &middot; Christchurch, New Zealand</p>
+    <p style="margin-top: 8px;">A joint edition of the Workshop on Predicting Performance from Reading &amp; Learning Behavior (LAK) and HAI-Agency (AIED 2026).</p>
+    <div class="footer-links">
+      <a href="#joint">Joint Edition</a>
+      <a href="#about">About</a>
+      <a href="#themes">Call for Papers</a>
+      <a href="#organizers">Organizers</a>
+    </div>
+    <div class="ack">
+      <strong style="color: rgba(255,255,255,0.7);">Contact: open.aied.community [at] gmail.com</strong>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => { document.querySelector('.nav-links').classList.remove('open'); });
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
