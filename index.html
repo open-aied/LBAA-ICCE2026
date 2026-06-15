@@ -74,7 +74,9 @@
     .eyebrow { display: flex; justify-content: center; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; animation: rise 0.7s ease-out; }
     .eyebrow::before { content: ''; width: 9px; height: 9px; background: var(--red); }
     .hero-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; animation: rise 0.7s ease-out 0.05s both; }
-    .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 30px; animation: rise 0.7s ease-out 0.1s both; }
+    .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 5.4vw, 4.4rem); line-height: 1.05; color: var(--ink); letter-spacing: -0.035em; white-space: nowrap; margin-bottom: 18px; animation: rise 0.7s ease-out 0.1s both; }
+    .hero-fulltitle { font-family: var(--font-body); font-weight: 500; font-size: clamp(0.98rem, 1.7vw, 1.22rem); color: var(--text); max-width: 760px; margin: 0 auto 30px; line-height: 1.5; animation: rise 0.7s ease-out 0.12s both; }
+    .hero-fulltitle em { font-style: normal; color: var(--red); font-weight: 600; }
     .hero h1 .amp { color: var(--red); font-style: normal; }
     .hero h1 .ai { color: var(--blue); }
     .hero-parents { display: flex; align-items: stretch; max-width: 760px; margin: 0 auto 32px; text-align: left; animation: rise 0.7s ease-out 0.15s both; }
@@ -258,6 +260,7 @@
     <div class="eyebrow">ICCE 2026 &middot; Christchurch, New Zealand</div>
     <div class="hero-tag">Joint Workshop</div>
     <h1>Learning Behavior <span class="amp">&amp;</span> <span class="ai">AI Agency</span></h1>
+    <p class="hero-fulltitle">Workshop on Predicting Performance from Reading and Learning Behavior and Orchestrating Human and AI Agency &mdash; <em>Joint Edition</em></p>
     <div class="hero-parents">
       <div class="pw a">
         <div class="pw-name">Predicting Performance from Reading &amp; Learning Behavior</div>
