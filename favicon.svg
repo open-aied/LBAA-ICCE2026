@@ -1,4 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#2a5d93"/>
-  <text x="32" y="42" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="800" letter-spacing="-1"><tspan fill="#F97316">H</tspan><tspan fill="#ffffff">AI</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <clipPath id="rounded"><rect x="2" y="2" width="60" height="60" rx="14"/></clipPath>
+  </defs>
+  <g clip-path="url(#rounded)">
+    <rect x="0" y="0" width="32" height="64" fill="#235787"/>
+    <rect x="32" y="0" width="32" height="64" fill="#c80f2e"/>
+  </g>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="17" y="31" font-size="25">L</text>
+    <text x="47" y="31" font-size="25">B</text>
+    <text x="17" y="56" font-size="25">A</text>
+    <text x="47" y="56" font-size="25">A</text>
+  </g>
 </svg>
