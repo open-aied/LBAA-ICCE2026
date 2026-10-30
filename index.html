@@ -189,6 +189,22 @@
     .coming-soon h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--ink); margin-bottom: 6px; }
     .coming-soon p { font-size: 0.92rem; color: var(--muted); }
 
+    /* ── KEYNOTES ── */
+    .kn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; margin-top: 40px; }
+    .kn-card { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 14px; padding: 30px 30px 32px; }
+    .kn-card.b { border-top-color: var(--red); }
+    .kn-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+    .kn-head .org-avatar { width: 84px; height: 84px; margin: 0; flex-shrink: 0; font-size: 1.4rem; }
+    .kn-head .org-photo { font-size: 0; }
+    .kn-no { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+    .kn-card.b .kn-no { color: var(--red); }
+    .kn-name { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); line-height: 1.25; }
+    .kn-aff { font-size: 0.82rem; color: var(--muted); line-height: 1.4; margin-top: 2px; }
+    .kn-title { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--ink); line-height: 1.3; letter-spacing: -0.01em; margin-bottom: 12px; }
+    .kn-abstract p { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+    .kn-abstract p:last-child { margin-bottom: 0; }
+    .kn-tba { font-size: 0.9rem; color: var(--muted); font-style: italic; padding: 18px 20px; border: 1px dashed var(--line); border-radius: 10px; background: var(--mist); }
+
     /* ── ORGANIZERS ── */
     .org-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1080px; margin: 0 auto; }
     .org-card { flex: 0 1 240px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 26px 20px; text-align: center; transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s; }
@@ -239,6 +255,7 @@
       .theme .tnum { font-size: 2.4rem; }
       section { padding: 64px 22px; }
       .hero { padding: 124px 22px 70px; }
+      .kn-card { padding: 24px 20px 26px; }
     }
   </style>
 </head>
@@ -257,6 +274,7 @@
       <a href="#about">About</a>
       <a href="#themes">Call for Papers</a>
       <a href="#dates">Important Dates</a>
+      <a href="#keynotes">Keynotes</a>
       <a href="#organizers">Organizers</a>
       <a href="https://easychair.org/conferences/?conf=learningbehavioraiag0" target="_blank" rel="noopener" class="btn-submit">Submit Paper</a>
     </div>
@@ -429,7 +447,7 @@
     <div class="kicker">Format</div>
     <h2 class="section-title">Workshop Program</h2>
     <div class="format-row">
-      <div class="format-item"><div class="fi-no">01</div><h4>Joint Keynote</h4><p>A shared keynote bridging learning analytics and agentic AI in education.</p></div>
+      <div class="format-item"><div class="fi-no">01</div><h4>Keynote Talks</h4><p>Two keynotes bridging learning analytics and agentic AI in education.</p></div>
       <div class="format-item"><div class="fi-no">02</div><h4>Thematic Sessions</h4><p>Paper presentations grouped by the three thematic areas.</p></div>
       <div class="format-item"><div class="fi-no">03</div><h4>Concluding Discussion</h4><p>Open problems and collaboration opportunities across both communities.</p></div>
     </div>
@@ -440,8 +458,36 @@
   </div>
 </section>
 
+<!-- KEYNOTES -->
+<section class="alt" id="keynotes">
+  <div class="container reveal">
+    <div class="kicker">Invited Talks</div>
+    <h2 class="section-title">Keynote Speakers</h2>
+    <div class="kn-grid">
+      <div class="kn-card">
+        <div class="kn-head">
+          <img class="org-avatar org-photo" src="img/flanagan.jpg" alt="Brendan Flanagan">
+          <div><div class="kn-no">Keynote 1</div><div class="kn-name">Brendan Flanagan</div><div class="kn-aff">Ritsumeikan University, Japan</div></div>
+        </div>
+        <h3 class="kn-title">Open Data in the Age of Conversational Learning: Lessons from Eight Years of Data Challenges</h3>
+        <div class="kn-abstract">
+          <p>Since 2018, data challenge workshops held alongside ICCE and LAK have given researchers something still rare in our field: access to real learning data for a shared research problem. In this keynote, I reflect on what the series has taught us about anonymisation, data agreements, and the challenges of deciding what data can be shared, with whom, and under what conditions.</p>
+          <p>I also draw on a recent survey of 1,125 papers from LAK, EDM, and AIED, which identified 172 open datasets used in 204 publications and informed the PRACTICE guidelines for publishing educational data. Finally, I discuss how learning data are changing as chatbots and agentic AI enter learning environments, shifting the record of learning from clickstreams to conversations and creating new challenges for data sharing and privacy.</p>
+        </div>
+      </div>
+      <div class="kn-card b">
+        <div class="kn-head">
+          <img class="org-avatar org-photo" src="img/kyoungwon-seo.jpg" alt="Kyoungwon Seo">
+          <div><div class="kn-no">Keynote 2</div><div class="kn-name">Kyoungwon Seo</div><div class="kn-aff">Seoul National University of Science and Technology, Korea</div></div>
+        </div>
+        <div class="kn-tba">Title and abstract to be announced.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ORGANIZERS -->
-<section class="alt" id="organizers">
+<section id="organizers">
   <div class="container reveal">
     <div class="kicker">People</div>
     <h2 class="section-title">Organizers</h2>
@@ -472,6 +518,7 @@
       <a href="#about">About</a>
       <a href="#themes">Call for Papers</a>
       <a href="#dates">Dates</a>
+      <a href="#keynotes">Keynotes</a>
       <a href="#organizers">Organizers</a>
     </div>
     <div class="ack"><strong style="color: rgba(255,255,255,0.7);">This workshop is supported by JST CREST Grant Number JPMJCR22D1.</strong></div>
